@@ -1,6 +1,9 @@
 [![PyPI version](https://img.shields.io/pypi/v/financekit-mcp)](https://pypi.org/project/financekit-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Glama MCP Server](https://glama.ai/mcp/servers/vdalhambra/financekit-mcp/badges/score.svg)](https://glama.ai/mcp/servers/vdalhambra/financekit-mcp)
+
+<!-- mcp-name: io.github.vdalhambra/financekit-mcp -->
 
 # FinanceKit MCP
 
