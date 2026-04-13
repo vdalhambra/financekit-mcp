@@ -1,0 +1,10 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+  commandFunction: |-
+    (config) => ({
+      command: 'uvx',
+      args: ['--from', 'git+https://github.com/vdalhambra/financekit-mcp.git', 'financekit'],
+    })
