@@ -1,0 +1,8 @@
+name: financekit-mcp
+description: "Financial Market Intelligence — stock quotes, technical analysis (RSI, MACD, Bollinger Bands), crypto prices, asset comparison, and portfolio analysis for AI agents"
+version: 1
+runtime: python
+entrypoint: src/financekit/server.py
+install:
+  - pip install -r requirements.txt
+start: python -m financekit.server
