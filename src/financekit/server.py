@@ -15,13 +15,15 @@ from financekit.tools.stocks import register_stock_tools
 from financekit.tools.crypto import register_crypto_tools
 from financekit.tools.technical import register_technical_tools
 from financekit.tools.compare import register_compare_tools
+from financekit.tools.market import register_market_tools
 
 mcp = FastMCP(
     name="FinanceKit",
     instructions=(
         "FinanceKit provides real-time financial market data and analysis. "
         "Use these tools to get stock quotes, crypto prices, technical indicators "
-        "(RSI, MACD, Bollinger Bands, SMA/EMA), compare assets, and analyze portfolios. "
+        "(RSI, MACD, Bollinger Bands, SMA/EMA), compare assets, analyze portfolios, "
+        "and get a market overview with major indices, VIX, and top movers. "
         "Data comes from Yahoo Finance and CoinGecko. "
         "Technical indicators are calculated from historical price data."
     ),
@@ -34,6 +36,7 @@ register_stock_tools(mcp)
 register_crypto_tools(mcp)
 register_technical_tools(mcp)
 register_compare_tools(mcp)
+register_market_tools(mcp)
 
 
 def main():
