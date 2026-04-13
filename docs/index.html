@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceKit MCP — Financial Market Intelligence for AI Agents</title>
+    <meta name="description" content="Free MCP server for stock quotes, technical analysis (RSI, MACD, Bollinger Bands), crypto prices, portfolio analysis. Works with Claude Code, Cursor, and any MCP client.">
+    <meta name="keywords" content="MCP server, financial analysis, stock quotes, technical analysis, RSI, MACD, Bollinger Bands, crypto prices, portfolio analysis, Claude Code, AI agent, FastMCP">
+    <meta property="og:title" content="FinanceKit MCP — Financial Market Intelligence for AI Agents">
+    <meta property="og:description" content="11 tools: stock quotes, technical analysis, crypto data, asset comparison, portfolio analysis. Free and open source.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vdalhambra.github.io/financekit-mcp/">
+    <link rel="canonical" href="https://vdalhambra.github.io/financekit-mcp/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; background: #f8f9fa; line-height: 1.6; }
+        .hero { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+        .install { background: #1a1a2e; color: #a8e6cf; padding: 16px 24px; border-radius: 8px; display: inline-block; font-family: monospace; font-size: 0.95rem; text-align: left; }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 40px 0; }
+        .tool { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .tool h3 { color: #302b63; margin-bottom: 8px; }
+        .tool p { color: #666; font-size: 0.9rem; }
+        h2 { font-size: 1.8rem; margin-bottom: 24px; color: #1a1a2e; }
+        .cta { text-align: center; padding: 60px 20px; }
+        .cta a { display: inline-block; background: #302b63; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 8px; }
+        .cta a:hover { background: #24243e; }
+        footer { text-align: center; padding: 40px; color: #999; font-size: 0.85rem; }
+        code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>FinanceKit MCP</h1>
+        <p>Financial Market Intelligence for AI Agents — stock quotes, technical analysis, crypto data, and portfolio insights via Model Context Protocol.</p>
+        <div class="install">uvx --from financekit-mcp financekit</div>
+    </div>
+
+    <div class="container">
+        <h2>11 Tools for Financial Analysis</h2>
+        <div class="tools">
+            <div class="tool">
+                <h3>Technical Analysis</h3>
+                <p>RSI, MACD, Bollinger Bands, SMA/EMA (20/50/200), ADX, Stochastic, ATR, OBV. Plus Golden Cross/Death Cross detection and overall bullish/bearish verdict.</p>
+            </div>
+            <div class="tool">
+                <h3>Stock Quotes</h3>
+                <p>Real-time prices, P/E ratio, market cap, 52-week range, beta, dividend yield. Single or batch quotes for up to 10 tickers.</p>
+            </div>
+            <div class="tool">
+                <h3>Crypto Market Data</h3>
+                <p>Prices, market cap, 1h/24h/7d changes, ATH data, supply info. Trending coins, search, and top coins by market cap via CoinGecko.</p>
+            </div>
+            <div class="tool">
+                <h3>Asset Comparison</h3>
+                <p>Compare returns, volatility, Sharpe ratio, and max drawdown across multiple assets. Automatic ranking by performance.</p>
+            </div>
+            <div class="tool">
+                <h3>Portfolio Analysis</h3>
+                <p>Total value, position weights, sector breakdown (including crypto as Digital Assets), and concentration risk assessment.</p>
+            </div>
+            <div class="tool">
+                <h3>Company Info</h3>
+                <p>Sector, industry, revenue, profit margins, return on equity, debt ratios, and business description for any public company.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Get Started</h2>
+        <a href="https://github.com/vdalhambra/financekit-mcp">GitHub</a>
+        <a href="https://pypi.org/project/financekit-mcp/">PyPI</a>
+        <a href="https://mcpize.com/mcp/financekit-mcp">MCPize</a>
+        <a href="https://smithery.ai/server/vdalhambra/financekit">Smithery</a>
+    </div>
+
+    <footer>
+        <p>FinanceKit MCP — Open Source (MIT) — Built with <a href="https://gofastmcp.com">FastMCP</a></p>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FinanceKit MCP",
+        "description": "Financial Market Intelligence MCP Server for AI agents. Stock quotes, technical analysis, crypto data, portfolio analysis.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Cross-platform",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "url": "https://github.com/vdalhambra/financekit-mcp",
+        "author": { "@type": "Person", "name": "Victor Dalhambra" }
+    }
+    </script>
+</body>
+</html>
