@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Check import structure
+        run: uv run python -c "from financekit.server import mcp; print(f'Server loaded: {len(mcp._tool_manager._tools)} tools')"
+
+      - name: Run tests (if present)
+        run: |
+          if [ -d "tests" ] && [ "$(ls -A tests/)" ]; then
+            uv run pytest tests/ -v
+          else
+            echo "No tests found, skipping"
+          fi
