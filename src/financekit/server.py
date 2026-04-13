@@ -5,6 +5,10 @@ Provides stock quotes, technical analysis, crypto market data,
 asset comparison, and portfolio analysis tools.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from fastmcp import FastMCP
 
 from financekit.tools.stocks import register_stock_tools
