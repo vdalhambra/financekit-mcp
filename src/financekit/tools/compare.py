@@ -133,8 +133,14 @@ def register_compare_tools(mcp: FastMCP) -> None:
                 except Exception:
                     pass
 
-                if sector:
-                    sectors[sector] = sectors.get(sector, 0) + value
+                if not sector:
+                    # Classify crypto and unknown assets
+                    sym = pos["symbol"]
+                    if "-USD" in sym or "-EUR" in sym or "-BTC" in sym:
+                        sector = "Digital Assets"
+                    else:
+                        sector = "Other"
+                sectors[sector] = sectors.get(sector, 0) + value
 
                 details.append({
                     "symbol": pos["symbol"],
