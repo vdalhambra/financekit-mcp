@@ -38,7 +38,14 @@ register_compare_tools(mcp)
 
 def main():
     """Entry point for the FinanceKit MCP server."""
-    mcp.run()
+    import os
+    if os.environ.get("PORT"):
+        # Running in cloud (MCPize/Cloud Run) — use HTTP transport
+        port = int(os.environ["PORT"])
+        mcp.run(transport="http", host="0.0.0.0", port=port)
+    else:
+        # Running locally — use stdio transport
+        mcp.run()
 
 
 if __name__ == "__main__":
