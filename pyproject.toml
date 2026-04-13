@@ -1,0 +1,40 @@
+[project]
+name = "financekit-mcp"
+version = "1.0.0"
+description = "Financial Market Intelligence MCP Server — stock quotes, technical analysis, crypto data, and portfolio insights for AI agents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Victor Dalhambra", email = "victor@financekit.dev" },
+]
+keywords = ["mcp", "finance", "stocks", "crypto", "technical-analysis", "ai-agent"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "fastmcp>=3.2.0",
+    "yfinance>=1.2.0",
+    "requests>=2.31.0",
+    "pandas>=2.0.0",
+    "ta>=0.11.0",
+]
+
+[project.scripts]
+financekit = "financekit.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/financekit"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
