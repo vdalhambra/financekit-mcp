@@ -5,4 +5,5 @@ runtime: python
 entrypoint: src/financekit/server.py
 install:
   - pip install -r requirements.txt
+  - pip install -e .
 start: python -m financekit.server
