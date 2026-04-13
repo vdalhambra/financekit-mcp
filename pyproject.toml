@@ -1,6 +1,6 @@
 [project]
 name = "financekit-mcp"
-version = "1.1.0"
+version = "1.2.0"
 description = "Financial Market Intelligence MCP Server — stock quotes, technical analysis, crypto data, and portfolio insights for AI agents"
 readme = "README.md"
 requires-python = ">=3.11"

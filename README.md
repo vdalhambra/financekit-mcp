@@ -70,34 +70,13 @@ Here are concrete examples of what you can ask your AI agent once FinanceKit is 
 
 ## Installation
 
-### Claude Code (recommended)
+### ⭐ Recommended: MCPize (hosted, no setup)
 
-```bash
-claude mcp add financekit -- uvx --from financekit-mcp financekit
-```
+The fastest way to get started. No terminal, no config files, no Python setup — works in any MCP client:
 
-### Claude Desktop / Cursor / Windsurf
+👉 **[Install FinanceKit on MCPize](https://mcpize.com/mcp/financekit-mcp)** — Free tier available (100 calls/month)
 
-Add to your MCP configuration (`claude_desktop_config.json`, `.cursor/mcp.json`, etc.):
-
-```json
-{
-  "mcpServers": {
-    "financekit": {
-      "command": "uvx",
-      "args": ["--from", "financekit-mcp", "financekit"]
-    }
-  }
-}
-```
-
-### Install via Smithery
-
-```bash
-npx -y @smithery/cli install @vdalhambra/financekit --client claude
-```
-
-### Install via MCPize (hosted, no local install)
+Or add to your MCP config directly:
 
 ```json
 {
@@ -109,14 +88,55 @@ npx -y @smithery/cli install @vdalhambra/financekit --client claude
 }
 ```
 
-### From PyPI
+**Why MCPize?**
+- ✅ Zero setup — works immediately in Claude Desktop, Cursor, Windsurf, Claude Code
+- ✅ Always up-to-date — new features deployed automatically
+- ✅ Scales with you — upgrade to Pro ($29/mo) for 10,000 calls + priority + all premium tools
+- ✅ Reliable uptime — managed cloud infrastructure
+- ✅ Analytics — track how your agents use the tools
+
+See [pricing](#pricing) below for all tiers including Team, Business, and Enterprise.
+
+---
+
+### 💻 Advanced: Self-hosted (developers)
+
+For those who prefer to run the server locally:
+
+<details>
+<summary><b>Claude Code CLI</b></summary>
+
+```bash
+claude mcp add financekit -- uvx --from financekit-mcp financekit
+```
+</details>
+
+<details>
+<summary><b>Claude Desktop / Cursor / Windsurf (local)</b></summary>
+
+```json
+{
+  "mcpServers": {
+    "financekit": {
+      "command": "uvx",
+      "args": ["--from", "financekit-mcp", "financekit"]
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary><b>From PyPI</b></summary>
 
 ```bash
 pip install financekit-mcp
 financekit
 ```
+</details>
 
-### From source
+<details>
+<summary><b>From source</b></summary>
 
 ```bash
 git clone https://github.com/vdalhambra/financekit-mcp.git
@@ -124,6 +144,36 @@ cd financekit-mcp
 uv sync
 uv run financekit
 ```
+</details>
+
+<details>
+<summary><b>Smithery</b></summary>
+
+```bash
+npx -y @smithery/cli install @vdalhambra/financekit --client claude
+```
+</details>
+
+> **Note:** Self-hosted = full feature access but you manage updates, uptime, and infrastructure. For most users, MCPize is the better choice.
+
+---
+
+## Pricing
+
+| Tier | Price | Calls/month | Includes |
+|------|-------|-------------|----------|
+| **Free** | $0 | 100 | 5 basic tools (quotes, company info, crypto price) |
+| **Hobby** | $9/mo | 2,500 | Most tools — no portfolio or market overview |
+| **Pro** ⭐ | $29/mo | 10,000 | All 12 tools + priority + premium features |
+| **Team** | $79/mo | 50,000 | Pro + 5 seats + CSV export + email support |
+| **Business** | $179/mo | 200,000 | Team + webhooks + alerts + SLA |
+| **Enterprise** | $499/mo | Unlimited | Business + white-label + on-prem + dedicated support |
+
+**Annual plans:** Get 2 months free (pay for 10, use 12).
+
+**Bundle:** Combine with [SiteAudit MCP](https://github.com/vdalhambra/siteaudit-mcp) for **$39/mo** (Pro Combo — save 19%).
+
+👉 **[View all pricing on MCPize](https://mcpize.com/mcp/financekit-mcp)**
 
 ## Data Sources
 
@@ -172,6 +222,15 @@ FinanceKit works with any AI agent or IDE that supports the Model Context Protoc
 - **Windsurf** — MCP settings
 - **Copilot** — MCP configuration
 - **Any MCP client** — stdio or HTTP transport
+
+## Support this project
+
+If FinanceKit is useful to you, please consider supporting ongoing development:
+
+- 💎 **[Upgrade to Pro on MCPize](https://mcpize.com/mcp/financekit-mcp)** — Best way to support + get premium features
+- ⭐ **Star this repo** — Helps other developers find it
+- 💖 **[Sponsor on GitHub](https://github.com/sponsors/vdalhambra)** — One-time or recurring support
+- 🐦 **Share on Twitter/X** — Tag [@ElAgenteRayo](https://twitter.com/ElAgenteRayo)
 
 ## License
 

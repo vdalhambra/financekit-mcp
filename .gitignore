@@ -9,3 +9,5 @@ build/
 *.log
 .pytest_cache/
 .mcpize/
+.mcpregistry_github_token
+.mcpregistry_registry_token

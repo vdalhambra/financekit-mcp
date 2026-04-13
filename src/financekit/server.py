@@ -16,6 +16,7 @@ from financekit.tools.crypto import register_crypto_tools
 from financekit.tools.technical import register_technical_tools
 from financekit.tools.compare import register_compare_tools
 from financekit.tools.market import register_market_tools
+from financekit.tools.premium import register_premium_tools
 
 mcp = FastMCP(
     name="FinanceKit",
@@ -27,7 +28,7 @@ mcp = FastMCP(
         "Data comes from Yahoo Finance and CoinGecko. "
         "Technical indicators are calculated from historical price data."
     ),
-    version="1.0.0",
+    version="1.2.0",
     mask_error_details=True,
 )
 
@@ -37,6 +38,7 @@ register_crypto_tools(mcp)
 register_technical_tools(mcp)
 register_compare_tools(mcp)
 register_market_tools(mcp)
+register_premium_tools(mcp)
 
 
 def main():

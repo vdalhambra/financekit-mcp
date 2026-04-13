@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinanceKit MCP — Financial Market Intelligence for AI Agents</title>
-    <meta name="description" content="Free MCP server for stock quotes, technical analysis (RSI, MACD, Bollinger Bands), crypto prices, portfolio analysis. Works with Claude Code, Cursor, and any MCP client.">
+    <meta name="description" content="MCP server for stock quotes, technical analysis (RSI, MACD, Bollinger Bands), crypto prices, portfolio analysis. Works with Claude Code, Cursor, and any MCP client. Free tier + Pro $29/mo.">
     <meta name="keywords" content="MCP server, financial analysis, stock quotes, technical analysis, RSI, MACD, Bollinger Bands, crypto prices, portfolio analysis, Claude Code, AI agent, FastMCP">
     <meta property="og:title" content="FinanceKit MCP — Financial Market Intelligence for AI Agents">
-    <meta property="og:description" content="12 tools: stock quotes, technical analysis, crypto data, market overview, asset comparison, portfolio analysis. Free and open source.">
+    <meta property="og:description" content="12 tools: stock quotes, technical analysis, crypto data, market overview, asset comparison, portfolio analysis. Free tier + Pro plans.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vdalhambra.github.io/financekit-mcp/">
     <link rel="canonical" href="https://vdalhambra.github.io/financekit-mcp/">
@@ -15,31 +15,60 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; background: #f8f9fa; line-height: 1.6; }
         .hero { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: white; padding: 80px 20px; text-align: center; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 16px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
-        .install { background: #1a1a2e; color: #a8e6cf; padding: 16px 24px; border-radius: 8px; display: inline-block; font-family: monospace; font-size: 0.95rem; text-align: left; }
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 40px 0; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 16px; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 640px; margin: 0 auto 32px; }
+        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+        .btn-primary { display: inline-block; background: #00d4aa; color: #0f0c29; padding: 16px 36px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 14px rgba(0,212,170,0.3); }
+        .btn-primary:hover { background: #00f5c4; transform: translateY(-1px); transition: all 0.2s; }
+        .btn-secondary { display: inline-block; background: transparent; color: white; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255,255,255,0.3); font-size: 1rem; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 40px 0; }
         .tool { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .tool h3 { color: #302b63; margin-bottom: 8px; }
-        .tool p { color: #666; font-size: 0.9rem; }
-        h2 { font-size: 1.8rem; margin-bottom: 24px; color: #1a1a2e; }
-        .cta { text-align: center; padding: 60px 20px; }
-        .cta a { display: inline-block; background: #302b63; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 8px; }
-        .cta a:hover { background: #24243e; }
+        .tool p { color: #666; font-size: 0.92rem; }
+        h2 { font-size: 2rem; margin-bottom: 12px; color: #1a1a2e; text-align: center; }
+        h2 + p.subtitle { text-align: center; color: #666; margin-bottom: 32px; font-size: 1.05rem; }
+        .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 40px 0; }
+        .tier { background: white; border-radius: 12px; padding: 28px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; display: flex; flex-direction: column; }
+        .tier.featured { background: linear-gradient(135deg, #302b63 0%, #24243e 100%); color: white; transform: scale(1.04); box-shadow: 0 10px 30px rgba(48,43,99,0.35); }
+        .tier.featured .price { color: #00f5c4; }
+        .tier.featured ul { color: rgba(255,255,255,0.92); }
+        .tier.featured .tier-badge { background: #00d4aa; color: #0f0c29; }
+        .tier-badge { display: inline-block; background: #e8e8f0; color: #302b63; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 99px; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .tier h3 { font-size: 1.15rem; margin-bottom: 4px; }
+        .price { font-size: 2.1rem; font-weight: 700; margin: 8px 0; color: #302b63; }
+        .price small { font-size: 0.85rem; font-weight: 400; opacity: 0.7; }
+        .tier ul { list-style: none; text-align: left; margin: 18px 0; color: #555; font-size: 0.9rem; flex: 1; }
+        .tier ul li { padding: 4px 0; }
+        .tier-cta { display: inline-block; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 12px; background: #302b63; color: white; }
+        .tier.featured .tier-cta { background: #00d4aa; color: #0f0c29; }
+        .cta { text-align: center; padding: 60px 20px; background: #1a1a2e; color: white; }
+        .cta h2 { color: white; }
+        .cta a { display: inline-block; background: #00d4aa; color: #0f0c29; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; margin: 8px; }
+        .cta .secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); font-weight: 500; }
         footer { text-align: center; padding: 40px; color: #999; font-size: 0.85rem; }
         code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        .install-code { background: #1a1a2e; color: #a8e6cf; padding: 16px 24px; border-radius: 8px; display: inline-block; font-family: monospace; font-size: 0.95rem; text-align: left; margin-top: 8px; }
+        .advanced-details { max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; padding: 24px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .advanced-details summary { cursor: pointer; font-weight: 600; color: #302b63; }
+        .advanced-details pre { background: #1a1a2e; color: #a8e6cf; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; margin-top: 12px; }
     </style>
 </head>
 <body>
     <div class="hero">
         <h1>FinanceKit MCP</h1>
         <p>Financial Market Intelligence for AI Agents — stock quotes, technical analysis, crypto data, and portfolio insights via Model Context Protocol.</p>
-        <div class="install">uvx --from financekit-mcp financekit</div>
+        <div class="hero-buttons">
+            <a href="https://mcpize.com/mcp/financekit-mcp" class="btn-primary">🚀 Install Free on MCPize</a>
+            <a href="https://github.com/vdalhambra/financekit-mcp" class="btn-secondary">View on GitHub</a>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 24px; opacity: 0.75;">Free tier: 100 calls/month — no credit card</p>
     </div>
 
     <div class="container">
         <h2>12 Tools for Financial Analysis</h2>
+        <p class="subtitle">Stocks, crypto, technicals, portfolio — all in one MCP server</p>
         <div class="tools">
             <div class="tool">
                 <h3>Technical Analysis</h3>
@@ -68,16 +97,97 @@
         </div>
     </div>
 
+    <div class="container" id="pricing">
+        <h2>Pricing</h2>
+        <p class="subtitle">Start free. Upgrade when you need more calls or premium tools.</p>
+        <div class="pricing">
+            <div class="tier">
+                <span class="tier-badge">FREE</span>
+                <h3>Free</h3>
+                <div class="price">$0<small>/mo</small></div>
+                <ul>
+                    <li>✓ 100 calls/month</li>
+                    <li>✓ 5 basic tools</li>
+                    <li>✓ Stocks + basic crypto</li>
+                    <li>✗ No technical analysis</li>
+                    <li>✗ No portfolio tools</li>
+                </ul>
+                <a href="https://mcpize.com/mcp/financekit-mcp" class="tier-cta">Get started</a>
+            </div>
+            <div class="tier featured">
+                <span class="tier-badge">MOST POPULAR</span>
+                <h3>Pro</h3>
+                <div class="price">$29<small>/mo</small></div>
+                <ul>
+                    <li>✓ 10,000 calls/month</li>
+                    <li>✓ All 12 tools</li>
+                    <li>✓ Full technical analysis</li>
+                    <li>✓ Portfolio + comparison</li>
+                    <li>✓ Priority response times</li>
+                    <li>✓ All premium v1.2 tools</li>
+                </ul>
+                <a href="https://mcpize.com/mcp/financekit-mcp" class="tier-cta">Start Pro trial</a>
+            </div>
+            <div class="tier">
+                <span class="tier-badge">TEAMS</span>
+                <h3>Team</h3>
+                <div class="price">$79<small>/mo</small></div>
+                <ul>
+                    <li>✓ 50,000 calls/month</li>
+                    <li>✓ 5 team seats</li>
+                    <li>✓ CSV export</li>
+                    <li>✓ Shared watchlists</li>
+                    <li>✓ Email support</li>
+                </ul>
+                <a href="https://mcpize.com/mcp/financekit-mcp" class="tier-cta">Choose Team</a>
+            </div>
+            <div class="tier">
+                <span class="tier-badge">BUSINESS</span>
+                <h3>Business</h3>
+                <div class="price">$179<small>/mo</small></div>
+                <ul>
+                    <li>✓ 200,000 calls/month</li>
+                    <li>✓ Webhooks & alerts</li>
+                    <li>✓ Backtesting engine</li>
+                    <li>✓ SLA 99.9%</li>
+                    <li>✓ Chat support</li>
+                </ul>
+                <a href="https://mcpize.com/mcp/financekit-mcp" class="tier-cta">Upgrade</a>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top: 20px; color:#666;">Enterprise ($499/mo) with white-label, on-prem, and dedicated support — <a href="mailto:victor@financekit.dev">contact us</a></p>
+        <p style="text-align:center; margin-top: 8px; color:#666;"><strong>Bundle:</strong> Combine with <a href="https://vdalhambra.github.io/siteaudit-mcp/">SiteAudit MCP</a> for $39/mo (save 19%)</p>
+    </div>
+
+    <div class="advanced-details">
+        <details>
+            <summary>Developer option: self-hosted install</summary>
+            <p style="margin-top: 12px;">Prefer to run locally? The server is open source (MIT) and free to self-host — you manage updates and infrastructure.</p>
+            <pre># Claude Code
+claude mcp add financekit -- uvx --from financekit-mcp financekit
+
+# Or via config (Cursor, Windsurf, Claude Desktop)
+{
+  "mcpServers": {
+    "financekit": {
+      "command": "uvx",
+      "args": ["--from", "financekit-mcp", "financekit"]
+    }
+  }
+}</pre>
+            <p style="margin-top: 12px; font-size: 0.9rem; color:#666;">View all install options on <a href="https://github.com/vdalhambra/financekit-mcp#installation">GitHub</a>.</p>
+        </details>
+    </div>
+
     <div class="cta">
-        <h2>Get Started</h2>
-        <a href="https://github.com/vdalhambra/financekit-mcp">GitHub</a>
-        <a href="https://pypi.org/project/financekit-mcp/">PyPI</a>
-        <a href="https://mcpize.com/mcp/financekit-mcp">MCPize</a>
-        <a href="https://smithery.ai/server/vdalhambra/financekit">Smithery</a>
+        <h2>Ready to build AI agents with financial intelligence?</h2>
+        <a href="https://mcpize.com/mcp/financekit-mcp">Start Free on MCPize</a>
+        <a href="https://github.com/vdalhambra/financekit-mcp" class="secondary">View on GitHub</a>
     </div>
 
     <footer>
         <p>FinanceKit MCP — Open Source (MIT) — Built with <a href="https://gofastmcp.com">FastMCP</a></p>
+        <p style="margin-top: 8px;"><a href="https://twitter.com/ElAgenteRayo">@ElAgenteRayo</a> · <a href="https://github.com/sponsors/vdalhambra">Sponsor</a></p>
     </footer>
 
     <script type="application/ld+json">
@@ -88,8 +198,12 @@
         "description": "Financial Market Intelligence MCP Server for AI agents. Stock quotes, technical analysis, crypto data, portfolio analysis.",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Cross-platform",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "url": "https://github.com/vdalhambra/financekit-mcp",
+        "offers": [
+            { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
+            { "@type": "Offer", "price": "29", "priceCurrency": "USD", "name": "Pro" },
+            { "@type": "Offer", "price": "79", "priceCurrency": "USD", "name": "Team" }
+        ],
+        "url": "https://vdalhambra.github.io/financekit-mcp/",
         "author": { "@type": "Person", "name": "Victor Dalhambra" }
     }
     </script>
