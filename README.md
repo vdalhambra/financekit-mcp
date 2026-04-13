@@ -1,19 +1,37 @@
+[![PyPI version](https://img.shields.io/pypi/v/financekit-mcp)](https://pypi.org/project/financekit-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+
 # FinanceKit MCP
 
-**Financial Market Intelligence for AI Agents** — real-time stock quotes, technical analysis, crypto data, and portfolio insights via the Model Context Protocol.
+**Financial Market Intelligence for AI Agents** — real-time stock quotes, technical analysis, crypto data, and portfolio insights via the Model Context Protocol (MCP).
 
-## What it does
+FinanceKit is an MCP server that gives Claude Code, Cursor, Windsurf, and any AI agent instant access to financial market data. No API keys required for stocks and crypto.
 
-FinanceKit gives your AI agent (Claude, Cursor, Copilot, etc.) access to financial market data and analysis. Ask questions like:
+## Use Cases
 
-- "What's the current price of AAPL?"
-- "Run technical analysis on TSLA"
-- "Compare AAPL vs MSFT vs GOOGL performance over the last 6 months"
-- "Analyze my portfolio: AAPL:10, MSFT:5, GOOGL:3"
-- "What are the trending cryptocurrencies right now?"
-- "Is Bitcoin overbought based on RSI?"
+Here are concrete examples of what you can ask your AI agent once FinanceKit is installed:
 
-## Tools (11)
+- **"Run full technical analysis on TSLA and tell me if it's a buy"** — Get RSI, MACD, Bollinger Bands, ADX, Stochastic, and pattern detection with a plain-English signal summary
+- **"Compare AAPL vs MSFT vs GOOGL performance over the last 6 months"** — Side-by-side returns, volatility, Sharpe ratio, and max drawdown
+- **"Analyze my portfolio: AAPL:50, NVDA:20, MSFT:30, AMZN:10"** — Total value, sector allocation, concentration risk, and diversification score
+- **"What are the trending cryptocurrencies right now? Any worth watching?"** — Top trending coins from CoinGecko with price data and momentum
+- **"Give me a market overview — how are the major indices doing?"** — S&P 500, NASDAQ, Dow, VIX, and market sentiment in one call
+- **"Is Bitcoin overbought? Show me RSI and Bollinger Band analysis"** — Full technical analysis works on crypto too, not just stocks
+
+## Why FinanceKit?
+
+| Feature | FinanceKit MCP | Yahoo Finance API | Alpha Vantage | TradingView |
+|---------|---------------|-------------------|---------------|-------------|
+| Works with Claude Code / Cursor | Yes | No | No | No |
+| No API key needed | Yes | Yes | No (free tier) | No |
+| Technical analysis built-in | 10+ indicators | Raw data only | Limited | Manual |
+| Crypto + stocks in one tool | Yes | Stocks only | Separate APIs | Manual |
+| Portfolio analysis | Yes | No | No | No |
+| MCP native (stdio + HTTP) | Yes | REST only | REST only | Web only |
+| Free | Yes | Yes | Rate limited | Paid |
+
+## Tools (12)
 
 ### Stocks
 | Tool | Description |
@@ -36,6 +54,11 @@ FinanceKit gives your AI agent (Claude, Cursor, Copilot, etc.) access to financi
 | `technical_analysis` | Full analysis: RSI, MACD, Bollinger Bands, SMA/EMA, ADX, Stochastic, ATR, OBV + pattern detection (Golden Cross, Death Cross, overbought/oversold) with plain-English signal summary |
 | `price_history` | Historical OHLCV data with summary statistics |
 
+### Market Overview
+| Tool | Description |
+|------|-------------|
+| `market_overview` | Major indices (S&P 500, NASDAQ, Dow), VIX, market sentiment |
+
 ### Portfolio & Comparison
 | Tool | Description |
 |------|-------------|
@@ -44,9 +67,15 @@ FinanceKit gives your AI agent (Claude, Cursor, Copilot, etc.) access to financi
 
 ## Installation
 
-### Claude Code / Claude Desktop
+### Claude Code (recommended)
 
-Add to your MCP configuration:
+```bash
+claude mcp add financekit -- uvx --from financekit-mcp financekit
+```
+
+### Claude Desktop / Cursor / Windsurf
+
+Add to your MCP configuration (`claude_desktop_config.json`, `.cursor/mcp.json`, etc.):
 
 ```json
 {
@@ -57,6 +86,31 @@ Add to your MCP configuration:
     }
   }
 }
+```
+
+### Install via Smithery
+
+```bash
+npx -y @smithery/cli install @vdalhambra/financekit --client claude
+```
+
+### Install via MCPize (hosted, no local install)
+
+```json
+{
+  "mcpServers": {
+    "financekit": {
+      "url": "https://financekit-mcp.mcpize.run/mcp"
+    }
+  }
+}
+```
+
+### From PyPI
+
+```bash
+pip install financekit-mcp
+financekit
 ```
 
 ### From source
@@ -70,9 +124,9 @@ uv run financekit
 
 ## Data Sources
 
-- **Stocks**: Yahoo Finance (via yfinance)
-- **Crypto**: CoinGecko API (free tier)
-- **Technical Indicators**: Calculated locally using the `ta` library
+- **Stocks**: Yahoo Finance (via yfinance) — free, no API key
+- **Crypto**: CoinGecko API (free tier, 10K calls/month)
+- **Technical Indicators**: Calculated locally using the `ta` library (RSI, MACD, Bollinger Bands, ADX, Stochastic, ATR, OBV)
 
 All data is cached to minimize API calls: quotes (60s), historical data (1h), crypto (2min), company info (24h).
 
@@ -104,6 +158,17 @@ Sector Breakdown:
   Technology: 85.2%
   Communication Services: 14.8%
 ```
+
+## Compatible AI Agents
+
+FinanceKit works with any AI agent or IDE that supports the Model Context Protocol:
+
+- **Claude Code** (CLI) — `claude mcp add`
+- **Claude Desktop** — `claude_desktop_config.json`
+- **Cursor** — `.cursor/mcp.json`
+- **Windsurf** — MCP settings
+- **Copilot** — MCP configuration
+- **Any MCP client** — stdio or HTTP transport
 
 ## License
 
