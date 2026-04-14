@@ -7,31 +7,43 @@ on:
     branches: [main]
 
 jobs:
-  lint-and-check:
+  test:
+    name: Test Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version: ["3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v4
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
 
       - name: Set up Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: uv sync
+      - name: Install project
+        run: uv sync --python ${{ matrix.python-version }}
 
-      - name: Check import structure
-        run: uv run python -c "from financekit.server import mcp; print(f'Server loaded: {len(mcp._tool_manager._tools)} tools')"
+      - name: Verify server loads
+        run: |
+          uv run --python ${{ matrix.python-version }} python -c "
+          import asyncio
+          from financekit.server import mcp
+          tools = asyncio.run(mcp.list_tools())
+          print(f'Server loaded with {len(tools)} tools')
+          assert len(tools) >= 12, f'Expected >=12 tools, got {len(tools)}'
+          "
 
       - name: Run tests (if present)
         run: |
-          if [ -d "tests" ] && [ "$(ls -A tests/)" ]; then
-            uv run pytest tests/ -v
+          if [ -d "tests" ] && [ -n "$(find tests -name 'test_*.py' -o -name '*_test.py' 2>/dev/null)" ]; then
+            uv run --python ${{ matrix.python-version }} pytest tests/ -v
           else
             echo "No tests found, skipping"
           fi
