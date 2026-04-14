@@ -11,6 +11,8 @@
 
 FinanceKit is an MCP server that gives Claude Code, Cursor, Windsurf, and any AI agent instant access to financial market data. No API keys required for stocks and crypto.
 
+> **Try it now — no install needed:** [Open FinanceKit in the MCPize Playground](https://mcpize.com/mcp/financekit-mcp/playground) — runs in your browser, free tier (100 calls/month)
+
 ## Use Cases
 
 Here are concrete examples of what you can ask your AI agent once FinanceKit is installed:
